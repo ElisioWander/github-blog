@@ -7,6 +7,11 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 2px ${(props) => props.theme['blue-base']};
+  }
+
   body {
     color: ${(props) => props.theme['base-text']};
     background-color: ${(props) => props.theme['base-background']};
@@ -26,5 +31,15 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
     font-size: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 87.5%;
+    }
   }
 `

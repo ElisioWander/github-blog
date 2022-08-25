@@ -5,12 +5,14 @@ import {
   faArrowUpRightFromSquare,
 } from '@fortawesome/free-solid-svg-icons'
 
+import { ProfileContainer, ProfileContent } from './ProfileStyles'
+
 export function Profile() {
   return (
-    <div>
+    <ProfileContainer>
       <img src="https://github.com/ElisioWander.png" alt="" />
 
-      <div>
+      <ProfileContent>
         <header>
           <h2>Elisio Wander</h2>
 
@@ -36,7 +38,7 @@ export function Profile() {
             10 seguidores
           </span>
         </footer>
-      </div>
-    </div>
+      </ProfileContent>
+    </ProfileContainer>
   )
 }
