@@ -58,11 +58,11 @@ localhost:3000
 - Linkedin: [@elisioWander](https://www.linkedin.com/in/elisio-wander-b88b69136/)
 - Github: [@elisioWander](https://github.com/ElisioWander)
 - Site: [elisiowander.vercel.app](https://elisiowander.vercel.app)
-- Deploy: [Coffee Delivery](https://github-blog-ig.vercel.app/)
+- Deploy: [Github.blog](https://github-blog-ig.vercel.app/)
 
 ---
 ## 📝 Licença
-Copyright © 2020 [@ElisioWander](https://github.com/ElisioWander/coffee-delivery/blob/main/LICENSE)
+Copyright © 2020 [@ElisioWander](https://github.com/ElisioWander/github-blog/blob/main/LICENSE)
 
 Este projeto está sobe a [LICENÇA MIT](https://opensource.org/licenses/MIT)
 
