@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { useEffect, useState } from 'react'
-import { api } from '../../services/axios'
+import { useFetch } from '../../hooks/useFetch'
+
 import {
   faUserGroup,
   faArrowUpRightFromSquare,
@@ -18,18 +18,7 @@ type ProfileData = {
 }
 
 export function Profile() {
-  const [profile, setProfile] = useState<ProfileData | null>(null)
-
-  async function getUserProfile() {
-    const response = await api.get('/users/elisioWander')
-    const data = response.data
-
-    setProfile(data)
-  }
-
-  useEffect(() => {
-    getUserProfile()
-  }, [])
+  const { data: profile } = useFetch<ProfileData>('/users/elisioWander')
 
   return (
     <ProfileContainer>
@@ -54,7 +43,7 @@ export function Profile() {
         <footer>
           <span>
             <FontAwesomeIcon icon={faGithub} />
-            {profile?.name}
+            {profile?.login}
           </span>
           <span>
             <FontAwesomeIcon icon={faUserGroup} />

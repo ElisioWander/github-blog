@@ -1,6 +1,8 @@
 import { ChangeEvent, useState } from 'react'
-import { PostCard } from '../Components/HomeParts/PostCard'
-import { Profile } from '../Components/HomeParts/Profile'
+import { useFetch } from '../../hooks/useFetch'
+import { Profile } from '../../Components/HomeParts/Profile'
+import { PostCard } from '../../Components/HomeParts/PostCard'
+import { Loading } from '../../Components/Loading'
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
@@ -9,8 +11,7 @@ import {
   PostCardContainer,
   PublicationAmount,
   SearchSection,
-} from './HomeStyles'
-import { useFetch } from '../hooks/useFetch'
+} from './styles'
 
 type IssuesData = {
   id: number
@@ -22,7 +23,9 @@ type IssuesData = {
 export function Home() {
   const [search, setSearch] = useState('')
 
-  const { data } = useFetch<any>('/repos/ElisioWander/github-blog/issues')
+  const { data, isFetching } = useFetch<any>(
+    '/repos/ElisioWander/github-blog/issues',
+  )
 
   const issues: IssuesData[] = data?.map((issue: any) => {
     return {
@@ -69,6 +72,7 @@ export function Home() {
         </SearchSection>
 
         <PostCardContainer>
+          {isFetching && <Loading />}
           {filteredIssues?.map((issue) => (
             <PostCard key={issue.id} issue={issue} />
           ))}

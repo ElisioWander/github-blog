@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { PostCardContent } from './PostCardStyles'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 type IssueData = {
   id: number
@@ -19,7 +21,7 @@ export function PostCard({ issue }: PostCardProps) {
         <h1>{issue.title}</h1>
         <span>{issue.createdAt}</span>
       </Link>
-      <p>{issue.content}</p>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{issue.content}</ReactMarkdown>
     </PostCardContent>
   )
 }

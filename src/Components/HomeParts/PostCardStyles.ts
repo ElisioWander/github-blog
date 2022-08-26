@@ -40,8 +40,4 @@ export const PostCardContent = styled.li`
       color: ${(props) => props.theme['base-span']};
     }
   }
-
-  p {
-    line-height: 1.6rem;
-  }
 `
