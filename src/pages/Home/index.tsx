@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react'
 import { useFetch } from '../../hooks/useFetch'
-import { Profile } from '../../Components/HomeParts/Profile'
-import { PostCard } from '../../Components/HomeParts/PostCard'
+import { Profile } from './Components/Profile'
+import { PostCard } from './Components/PostCard'
 import { Loading } from '../../Components/Loading'
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
@@ -41,7 +41,7 @@ export function Home() {
 
   const filteredIssues =
     search.length > 0
-      ? issues?.filter((issue) => issue.title.toLowerCase().includes(search))
+      ? issues?.filter((issue) => issue.title.includes(search))
       : issues
 
   const publicationAmount = filteredIssues?.length

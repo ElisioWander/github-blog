@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { useFetch } from '../../hooks/useFetch'
-
+import { useFetch } from '../../../hooks/useFetch'
+import { GithubInfo } from '../../../Components/GithubInfo/GithubInfo'
+import { GithubInfoItem } from '../../../Components/GithubInfo/GithubInfoItem'
 import {
   faUserGroup,
   faArrowUpRightFromSquare,
@@ -40,16 +41,17 @@ export function Profile() {
 
         <p>{profile?.bio}</p>
 
-        <footer>
-          <span>
-            <FontAwesomeIcon icon={faGithub} />
-            {profile?.login}
-          </span>
-          <span>
-            <FontAwesomeIcon icon={faUserGroup} />
-            {profile?.followers} seguidores
-          </span>
-        </footer>
+        <GithubInfo>
+          <GithubInfoItem
+            icon={<FontAwesomeIcon icon={faGithub} />}
+            info={profile?.login}
+          />
+          <GithubInfoItem
+            icon={<FontAwesomeIcon icon={faUserGroup} />}
+            info={profile?.followers}
+            text="seguidores"
+          />
+        </GithubInfo>
       </ProfileContent>
     </ProfileContainer>
   )

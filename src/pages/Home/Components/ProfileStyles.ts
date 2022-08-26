@@ -27,6 +27,7 @@ export const ProfileContainer = styled.section`
 
 export const ProfileContent = styled.div`
   width: 100%;
+
   header {
     display: flex;
     align-items: center;
@@ -69,26 +70,5 @@ export const ProfileContent = styled.div`
   p {
     line-height: 1.6rem;
     margin: 0.5rem 0 1.5rem;
-  }
-
-  footer {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-
-    span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-
-      color: ${(props) => props.theme['base-subtitle']};
-
-      svg {
-        width: 1.125rem;
-        height: 1.125rem;
-        color: ${(props) => props.theme['base-label']};
-      }
-    }
   }
 `

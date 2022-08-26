@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components'
-import { Header } from './Components/Header'
 import { BrowserRouter } from 'react-router-dom'
+import { Header } from './Components/Header'
 
 import { GlobalStyles } from './styles/global'
 import { defaultTheme } from './styles/themes/theme'

@@ -1,5 +1,5 @@
-import headerCover from '../assets/header-cover.svg'
-import { HeaderContainer } from './HeaderStyles'
+import headerCover from '../../assets/header-cover.svg'
+import { HeaderContainer } from './Styles'
 
 export function Header() {
   return (

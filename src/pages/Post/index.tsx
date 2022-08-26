@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
-import { PostInfo } from '../../Components/PostParts/PostInfo'
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import ReactMarkdown from 'react-markdown'
@@ -8,6 +7,7 @@ import remarkGfm from 'remark-gfm'
 
 import { PostContainer, PostContent } from './styles'
 import { Loading } from '../../Components/Loading'
+import { PostInfo } from './Components/PostInfo'
 
 export type IssueData = {
   title: string

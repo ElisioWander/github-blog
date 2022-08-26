@@ -47,35 +47,4 @@ export const PostInfoSection = styled.section`
     font-size: 1.5rem;
     line-height: 1.95rem;
   }
-
-  footer {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-
-      color: ${(props) => props.theme['base-label']};
-
-      svg {
-        width: 1.125rem;
-        height: 1.125rem;
-      }
-    }
-
-    @media (max-width: 712px) {
-      flex-direction: column;
-      gap: 1rem;
-      padding-top: 1rem;
-
-      span {
-        width: 100%;
-        justify-content: flex-start;
-      }
-    }
-  }
 `
