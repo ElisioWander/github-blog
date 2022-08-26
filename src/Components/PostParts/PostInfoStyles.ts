@@ -66,5 +66,16 @@ export const PostInfoSection = styled.section`
         height: 1.125rem;
       }
     }
+
+    @media (max-width: 712px) {
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 1rem;
+
+      span {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
   }
 `

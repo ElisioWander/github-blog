@@ -19,6 +19,10 @@ export const ProfileContainer = styled.section`
 
     border-radius: 50%;
   }
+
+  @media (max-width: 712px) {
+    flex-direction: column;
+  }
 `
 
 export const ProfileContent = styled.div`
