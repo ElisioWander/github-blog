@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { PostCardContent } from './PostCardStyles'
 
-type PostData = {
+type IssueData = {
   id: number
   title: string
   createdAt: string
@@ -9,17 +9,17 @@ type PostData = {
 }
 
 interface PostCardProps {
-  post: PostData
+  issue: IssueData
 }
 
-export function PostCard({ post }: PostCardProps) {
+export function PostCard({ issue }: PostCardProps) {
   return (
     <PostCardContent>
-      <Link to={`/post/${post.id}`}>
-        <h1>{post.title}</h1>
-        <span>{post.createdAt}</span>
+      <Link to={`/post/${issue.id}`}>
+        <h1>{issue.title}</h1>
+        <span>{issue.createdAt}</span>
       </Link>
-      <p>{post.content}</p>
+      <p>{issue.content}</p>
     </PostCardContent>
   )
 }

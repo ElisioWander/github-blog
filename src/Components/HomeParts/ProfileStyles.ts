@@ -21,6 +21,8 @@ export const ProfileContainer = styled.section`
 `
 
 export const ProfileContent = styled.div`
+  width: 100%;
+
   header {
     display: flex;
     align-items: center;

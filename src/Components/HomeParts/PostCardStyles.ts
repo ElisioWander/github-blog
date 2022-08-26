@@ -26,16 +26,15 @@ export const PostCardContent = styled.li`
     cursor: pointer;
 
     h1 {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       line-height: 2rem;
+      flex: 1;
     }
 
     > span {
-      min-width: 53px;
-
       display: block;
 
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       line-height: 2.2rem;
 
       color: ${(props) => props.theme['base-span']};
