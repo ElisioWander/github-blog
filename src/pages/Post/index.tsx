@@ -1,52 +1,41 @@
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
-import { formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import { Loading } from '../../Components/Loading'
+import { PostInfo } from './Components/PostInfo'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 import { PostContainer, PostContent } from './styles'
-import { Loading } from '../../Components/Loading'
-import { PostInfo } from './Components/PostInfo'
 
-export type IssueData = {
+export type Issue = {
   title: string
-  user: string
-  url: string
-  content: string
-  comments: number
-  createdAt: string
+  user: {
+    login: string
+  }
+  html_url: string
+  body: string
+  comments: string
+  created_at: string
 }
 
 export function Post() {
   const { issueId } = useParams()
 
-  const { data, isFetching } = useFetch<any>(
+  const { data: issue, isFetching } = useFetch<Issue>(
     `/repos/ElisioWander/github-blog/issues/${issueId}`,
   )
 
-  const issue: IssueData = {
-    title: data?.title,
-    user: data?.user.login,
-    url: data?.html_url,
-    content: data?.body,
-    comments: data?.comments,
-    createdAt:
-      data?.created_at &&
-      formatDistanceToNow(new Date(data?.created_at), {
-        addSuffix: true,
-        locale: ptBR,
-      }),
+  if (!issue || isFetching) {
+    return <Loading />
   }
 
   return (
     <PostContainer>
-      {isFetching && <Loading />}
       <PostInfo issue={issue} />
 
       <PostContent>
         <ReactMarkdown className="lineBreak" remarkPlugins={[remarkGfm]}>
-          {issue.content}
+          {issue.body}
         </ReactMarkdown>
       </PostContent>
     </PostContainer>
