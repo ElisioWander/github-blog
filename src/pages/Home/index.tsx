@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from 'react'
-import { useFetch } from '../../hooks/useFetch'
 import { Profile } from './Components/Profile'
 import { PostCard } from './Components/PostCard'
 import { Loading } from '../../Components/Loading'
+import { useQuery } from '@tanstack/react-query'
+import { getRepositories } from '../../hooks/useGithub'
 
 import {
   HomeContainer,
@@ -21,17 +22,21 @@ type Issue = {
 export function Home() {
   const [search, setSearch] = useState('')
 
-  const { data: issues, isFetching } = useFetch<Issue[]>(
-    '/repos/ElisioWander/github-blog/issues',
+  const { data: issues, isFetching } = useQuery<Issue[]>(
+    ['ISSUES'],
+    getRepositories,
+    {
+      staleTime: 1000 * 60, // 1 min
+    },
   )
 
   if (!issues || isFetching) {
     return <Loading />
   }
 
-  const filteredIssues =
+  const filteredIssues: Issue[] =
     search.length > 0
-      ? issues.filter((issue) => issue.title.includes(search))
+      ? issues?.filter((issue) => issue.title.includes(search))
       : issues
 
   const publicationAmount = filteredIssues.length

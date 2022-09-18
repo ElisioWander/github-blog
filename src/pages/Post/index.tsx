@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
 import { Loading } from '../../Components/Loading'
 import { PostInfo } from './Components/PostInfo'
+import { useQuery } from '@tanstack/react-query'
+import { getIssue } from '../../hooks/useGithub'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -21,8 +22,12 @@ export type Issue = {
 export function Post() {
   const { issueId } = useParams()
 
-  const { data: issue, isFetching } = useFetch<Issue>(
-    `/repos/ElisioWander/github-blog/issues/${issueId}`,
+  const { data: issue, isFetching } = useQuery<Issue>(
+    ['ISSUE'],
+    () => getIssue(issueId as string),
+    {
+      staleTime: 1000 * 60, // 1 min
+    },
   )
 
   if (!issue || isFetching) {
@@ -35,7 +40,7 @@ export function Post() {
 
       <PostContent>
         <ReactMarkdown className="lineBreak" remarkPlugins={[remarkGfm]}>
-          {issue.body}
+          {issue?.body}
         </ReactMarkdown>
       </PostContent>
     </PostContainer>

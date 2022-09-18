@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { useFetch } from '../../../hooks/useFetch'
 import { GithubInfo } from '../../../Components/GithubInfo/GithubInfo'
 import { GithubInfoItem } from '../../../Components/GithubInfo/GithubInfoItem'
 import {
   faUserGroup,
   faArrowUpRightFromSquare,
 } from '@fortawesome/free-solid-svg-icons'
+import { useQuery } from '@tanstack/react-query'
+import { getUserData } from '../../../hooks/useGithub'
 
 import { ProfileContainer, ProfileContent } from './ProfileStyles'
 
@@ -19,7 +20,9 @@ type ProfileData = {
 }
 
 export function Profile() {
-  const { data: profile } = useFetch<ProfileData>('/users/elisioWander')
+  const { data: profile } = useQuery<ProfileData>(['USER'], getUserData, {
+    staleTime: 5000 * 60, // 5 min
+  })
 
   return (
     <ProfileContainer>

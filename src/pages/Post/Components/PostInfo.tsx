@@ -20,7 +20,7 @@ interface PostInfoProps {
 }
 
 export function PostInfo({ issue }: PostInfoProps) {
-  const dateFormatted = formatDistanceToNow(new Date(issue.created_at), {
+  const dateFormatted = formatDistanceToNow(new Date(issue?.created_at), {
     addSuffix: true,
     locale: ptBR,
   })
@@ -32,18 +32,18 @@ export function PostInfo({ issue }: PostInfoProps) {
           <FontAwesomeIcon icon={faChevronLeft} />
           Voltar
         </Link>
-        <a href={issue.html_url} target="_blank" rel="noreferrer">
+        <a href={issue?.html_url} target="_blank" rel="noreferrer">
           Ver no github
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </a>
       </header>
 
-      <h1>{issue.title}</h1>
+      <h1>{issue?.title}</h1>
 
       <GithubInfo>
         <GithubInfoItem
           icon={<FontAwesomeIcon icon={faGithub} />}
-          info={issue.user.login}
+          info={issue?.user.login}
         />
         <GithubInfoItem
           icon={<FontAwesomeIcon icon={faCalendarDay} />}
@@ -51,7 +51,7 @@ export function PostInfo({ issue }: PostInfoProps) {
         />
         <GithubInfoItem
           icon={<FontAwesomeIcon icon={faComment} />}
-          info={issue.comments}
+          info={issue?.comments}
           text="Comentários"
         />
       </GithubInfo>
